@@ -2,11 +2,11 @@
 #include "DHT.h"
 
 // Configuration du WiFi
-const char* ssid = "SSID";
-const char* password = "PASSWORD";
+const char* ssid = "SSID"; // Remplacez par votre SSID
+const char* password = "PASSWORD"; // Remplacez par votre mot de passe
 
 // Adresse IP et port du serveur
-const char* serverAddress = "SERVER_ADDRESS";
+const char* serverAddress = "SERVER_ADDRESS"; // Remplacez par l'adresse de votre serveur
 const uint16_t serverPort = 10000;
 
 // Capteur DHT
