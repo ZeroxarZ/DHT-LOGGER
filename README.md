@@ -1,5 +1,3 @@
----
-
 # **DHT-LOGGER**
 
 > Home Assistant Compatible: This project can easily integrate with Home Assistant for advanced home automation.
