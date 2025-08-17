@@ -230,17 +230,16 @@ python Interieur/SERVER/server.py
 
 ---
 
-## **Customization**
+## ⚠️ Configuration to adapt 
 
-* Change city/postcode for weather in backend
-* Add additional sensors by duplicating Arduino & backend code
-* Enable Home Assistant/OpenWeatherMap integration in `.env`
-* Modify JS/Python files as needed for project-specific variables:
+Make sure to check and adapt some JavaScript (`js/`) and Python (`SERVER/`) files: certain fields, variable names, or the city may need modification to match **your project** or **your location**.
 
-  * `Interieur/WEB/js/alerte.js` → department
-  * `Interieur/WEB/js/index.js` → city or postal code
-  * `Interieur/SERVER/api.py` → city or API params
-  * `Interieur/SERVER/config.py` → project path
+### Example files/lines to edit:
+
+* `Interieur/WEB/js/alerte.js`: line 1 (department/region)
+* `Interieur/WEB/js/index.js`: line 267 (city or postal code)
+* `Interieur/SERVER/api.py`: line 51 (city or API parameters)
+* `Interieur/SERVER/config.py`: line 3 (project path or configuration)
 
 ---
 
@@ -480,17 +479,16 @@ python Interieur/SERVER/server.py
 
 ---
 
-## **Personnalisation**
+## ⚠️ Configuration à adapter 
 
-* Modifier ville/code postal pour météo
-* Ajouter capteurs en dupliquant code Arduino/backend
-* Activer Home Assistant/OpenWeatherMap dans `.env`
-* Modifier JS/Python si nécessaire :
+Pensez à vérifier et adapter certains fichiers JavaScript (`js/`) et Python (`SERVER/`) : certains champs, noms de variables ou la ville peuvent nécessiter une modification pour correspondre à **votre projet** ou **votre localisation**.
 
-  * `WEB/js/alerte.js` → département
-  * `WEB/js/index.js` → ville/code postal
-  * `SERVER/api.py` → ville/API
-  * `SERVER/config.py` → chemin projet
+### Exemple de fichiers/lignes à modifier :
+
+* `Interieur/WEB/js/alerte.js` : ligne 1 (département)
+* `Interieur/WEB/js/index.js` : ligne 267 (ville ou code postal)
+* `Interieur/SERVER/api.py` : ligne 51 (ville ou paramètres API)
+* `Interieur/SERVER/config.py` : ligne 3 (chemin du projet ou configuration)
 
 ---
 
