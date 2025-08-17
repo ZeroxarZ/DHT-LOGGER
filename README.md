@@ -1,80 +1,85 @@
-
-
-
-# DHT-LOGGER
-
-> Compatible Home Assistant : Ce projet peut s'intégrer facilement à Home Assistant pour une domotique avancée.
-
-DHT-Logger est une solution complète pour surveiller, enregistrer et visualiser la température et l’humidité à l’aide d’un capteur DHT22, d’un microcontrôleur (ESP32/ESP8266) et d’un serveur web Python. Le projet propose une interface web moderne, un stockage des données, des exports, des alertes et une gestion utilisateur.
+Bien sûr ! Voici une version optimisée du README pour GitHub, d’abord en **anglais**, puis en **français**. J’ai gardé le style clair, les sections et les détails techniques.
 
 ---
 
-## 🔧 Matériel requis
+# **DHT-LOGGER**
 
-- 🖥️ Raspberry Pi 4 ou 5
-- 🔌 ESP32 Nano
-- 🌡️ Capteur DHT22
-- 🧵 Fils de connexion
-- 🏠 Boîtier étanche (si le capteur est installé en extérieur)
-- 📡 Connexion Wi-Fi ou Ethernet
+> Home Assistant Compatible: This project can easily integrate with Home Assistant for advanced home automation.
 
-## 🛠️ Schéma de connexion
-
-Pour connecter le capteur DHT22 à l'ESP32 Nano :
-
-| DHT22 | ESP32 Nano |
-|-------|------------|
-| VCC   | 3.3V       |
-| DATA  | D4 (PIN DIGITAL4) |
-| GND   | GND        |
+DHT-Logger is a complete solution for monitoring, logging, and visualizing temperature and humidity using a DHT22 sensor, a microcontroller (ESP32/ESP8266), and a Python web server. The project features a modern web interface, data storage, exports, alerts, and user management.
 
 ---
 
-## 🚀 Installation et configuration
+## 🔧 **Required Hardware**
 
-### 1️⃣ Programmer l'ESP32
+* 🖥️ Raspberry Pi 4 or 5
+* 🔌 ESP32 Nano
+* 🌡️ DHT22 Sensor
+* 🧵 Jumper wires
+* 🏠 Waterproof enclosure (for outdoor installations)
+* 📡 Wi-Fi or Ethernet connection
 
-- Télécharger et installer l'IDE Arduino : [📥 Lien de téléchargement](https://www.arduino.cc/en/software)
-- Configurer l'ESP32-S3-Box :
-	- Si l'ESP32-S3-Box n'apparaît pas, ajoutez ce lien dans Fichier -> Préférences -> URL de gestionnaire de cartes supplémentaires :
-		`http://arduino.esp8266.com/stable/package_esp8266com_index.json`
-	- Sélectionnez le bon port COM et la bonne architecture.
-- Ajouter les bibliothèques nécessaires dans l'IDE Arduino (Outils -> Gestionnaire de Bibliothèques) :
-	- DHT sensor library (`DHT.h`)
-	- ESP32 WiFi library (`WiFi.h`)
-- Téléverser le code en modifiant les paramètres suivants :
-	- 📶 SSID et mot de passe Wi-Fi
-	- 🌍 Adresse IP et Port du serveur
+---
 
-### 2️⃣ Installer l'OS Raspberry Pi (ou Ubuntu)
+## 🛠️ **Wiring Diagram**
 
-- Télécharger et installer Raspberry Pi Imager : [📥 Lien de téléchargement](https://www.raspberrypi.com/software/)
-- (Vous pouvez aussi utiliser Ubuntu ou tout système Linux compatible pour héberger le serveur.)
-- Flasher la carte SD avec l'OS Raspberry Pi 64 bits avec interface
-- Configurer le SSH et le Wi-Fi avant l'installation pour éviter des manipulations ultérieures
+| DHT22 | ESP32 Nano         |
+| ----- | ------------------ |
+| VCC   | 3.3V               |
+| DATA  | D4 (Digital Pin 4) |
+| GND   | GND                |
 
-### 3️⃣ Déployer le serveur DHT-Logger
+---
 
-- 📂 Copier le dossier DHT-LOGGER-main sur le bureau
-- 📁 Créer un dossier DHTLOGGER et y extraire le fichier .zip
-- ✏️ Modifier `server.py` pour définir l’IP et le port du serveur
+## 🚀 **Installation & Setup**
 
-### 4️⃣ Automatiser le lancement du serveur au démarrage ⚙️
+### 1️⃣ **Program the ESP32**
 
-Créer un service systemd pour démarrer automatiquement le serveur :
+* Download and install Arduino IDE: [📥 Arduino IDE](https://www.arduino.cc/en/software)
+* Configure ESP32-S3-Box:
 
-```ini
+  * If it doesn’t appear, add this URL in *File → Preferences → Additional Boards Manager URLs*:
+
+    ```
+    http://arduino.esp8266.com/stable/package_esp8266com_index.json
+    ```
+  * Select the correct COM port and board architecture.
+* Install required libraries via *Tools → Manage Libraries*:
+
+  * DHT sensor library (`DHT.h`)
+  * ESP32 WiFi library (`WiFi.h`)
+* Upload the code, modifying:
+
+  * 📶 Wi-Fi SSID & password
+  * 🌍 Server IP address and port
+
+### 2️⃣ **Install Raspberry Pi OS (or Ubuntu)**
+
+* Download Raspberry Pi Imager: [📥 Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+* Flash a 64-bit OS image to your SD card
+* Configure SSH and Wi-Fi before first boot
+
+### 3️⃣ **Deploy DHT-Logger Server**
+
+* Copy the `DHT-LOGGER-main` folder to your Desktop
+* Create `DHTLOGGER` folder and extract the zip
+* Edit `server.py` to set server IP & port
+
+### 4️⃣ **Automate server startup with systemd ⚙️**
+
+```bash
 sudo nano /etc/systemd/system/dhtlogger.service
 ```
-Ajouter le contenu suivant :
+
+Paste:
 
 ```ini
 [Unit]
-Description=Serveur DHT Logger
+Description=DHT Logger Server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/pi/Desktop/DHTLOGGER/DHT-LOGGER-main/(Interieur ou Exterieur)/SERVER/server.py
+ExecStart=/usr/bin/python3 /home/pi/Desktop/DHTLOGGER/DHT-LOGGER-main/Interieur/SERVER/server.py
 WorkingDirectory=/home/pi/Desktop/DHTLOGGER/DHT-LOGGER-main/Interieur/SERVER
 StandardOutput=inherit
 StandardError=inherit
@@ -85,9 +90,7 @@ User=pi
 WantedBy=multi-user.target
 ```
 
-💾 Sauvegarder avec CTRL + X, puis Y et Entrée.
-
-Ensuite, rechargez la configuration systemd et activez le service au démarrage avec les commandes suivantes :
+Reload and enable:
 
 ```bash
 sudo systemctl daemon-reload
@@ -96,161 +99,416 @@ sudo systemctl restart dhtlogger
 sudo systemctl status dhtlogger
 ```
 
-Faites la même chose pour le service mail (`dhtloggermailinterieur.service`) si vous souhaitez automatiser l'envoi des alertes par email.
-
-```
-
-
+Do the same for the mail alert service (`dhtloggermailinterieur.service`) if email notifications are needed.
 
 ---
 
-## Structure du projet
+## **Project Structure**
 
 ```
 DHT-Logger/
 │
-├── Arduino/Interieur/Interieur.ino      # Code Arduino pour le microcontrôleur
+├── Arduino/Interieur/Interieur.ino      # Arduino code for microcontroller
+│
+├── Interieur/
+│   ├── DATA/data.csv                    # Collected data (CSV)
+│   ├── SERVER/                          # Python backend (API, management, storage…)
+│   └── WEB/                             # Web interface (HTML, CSS, JS, icons…)
+│
+├── .env                                 # Configuration (environment variables)
+├── LICENSE                              # MIT License
+├── README.md                             # This file
+```
+
+---
+
+## **Main Features**
+
+* Automatic temperature & humidity readings (DHT22)
+* Wi-Fi data transmission to a central server
+* Data storage in CSV files
+* Responsive web interface (graphs, history, CSV/Excel export)
+* Authentication, user management, GDPR compliance
+* Alerts & water restrictions
+* Home Assistant & OpenWeatherMap integration
+
+**General Architecture:**
+
+```
+[DHT22 Sensor] --(ESP32/ESP8266 via Wi-Fi)--> [Python Server] --(CSV/MySQL)--> [Web Interface]
+```
+
+---
+
+## **Software Installation**
+
+### 1. Required hardware
+
+* 1 ESP32 or ESP8266 microcontroller
+* 1 DHT22 sensor
+* Stable Wi-Fi connection
+* Computer or server to host Python backend
+
+### 2. Microcontroller setup
+
+* Open `Arduino/Interieur/Interieur.ino` in Arduino IDE
+* Set Wi-Fi credentials:
+
+```cpp
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
+```
+
+* Set server address:
+
+```cpp
+const char* serverAddress = "SERVER_IP";
+```
+
+* Upload the code
+
+### 3. Python server installation
+
+* Install Python 3.8+
+* Clone or download the repository
+* Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+* Configure `.env` file:
+
+```
+FLASK_SECRET_KEY=...
+MAIL_USERNAME=...
+MAIL_PASSWORD=...
+SERVER_ADDRESS=0.0.0.0
+SERVER_PORT=10000
+MYSQL_HOST=...
+MYSQL_USER=...
+MYSQL_PASSWORD=...
+MYSQL_DATABASE=...
+OPENWEATHER_API_KEY=...
+HOME_ASSISTANT_TOKEN=...
+HOME_ASSISTANT_URL=...
+```
+
+* Edit `Interieur/SERVER/config.py` for project path:
+
+```python
+BASE_DIR = "/home/pi/Desktop/DHT-Logger/Interieur"
+```
+
+### 4. Start the server
+
+```bash
+python Interieur/SERVER/server.py
+```
+
+* Server listens by default on port `10000`
+
+### 5. Access the web interface
+
+* Open browser: `http://localhost:10000` or `http://SERVER_IP:10000`
+* View real-time data, history, export CSV/Excel, etc.
+
+---
+
+## **Usage**
+
+* Data sent every minute by ESP32
+* Stored in `Interieur/DATA/data.csv`
+* Web interface features:
+
+  * Real-time temperature & humidity
+  * Interactive graphs
+  * Export CSV/Excel
+  * History browsing
+  * Water alerts
+  * Email notifications every 30 min if thresholds exceeded
+  * User account management
+  * GDPR compliance
+
+---
+
+## **Customization**
+
+* Change city/postcode for weather in backend
+* Add additional sensors by duplicating Arduino & backend code
+* Enable Home Assistant/OpenWeatherMap integration in `.env`
+* Modify JS/Python files as needed for project-specific variables:
+
+  * `Interieur/WEB/js/alerte.js` → department
+  * `Interieur/WEB/js/index.js` → city or postal code
+  * `Interieur/SERVER/api.py` → city or API params
+  * `Interieur/SERVER/config.py` → project path
+
+---
+
+## **Security & GDPR**
+
+* Personal data is protected and never shared
+* Users can request access, correction, or deletion via GDPR page
+
+---
+
+## **License**
+
+MIT License. See `LICENSE`
+
+---
+
+## **Support & Contact**
+
+For questions, suggestions, or bugs, open a GitHub issue or contact the administrator listed on the GDPR page.
+
+---
+
+# **VERSION FRANÇAISE**
+
+> Compatible Home Assistant : Ce projet peut s’intégrer facilement à Home Assistant pour une domotique avancée.
+
+DHT-Logger est une solution complète pour surveiller, enregistrer et visualiser la température et l’humidité via un capteur DHT22, un microcontrôleur (ESP32/ESP8266) et un serveur web Python. L’interface est moderne, avec stockage des données, export, alertes et gestion des utilisateurs.
+
+---
+
+## 🔧 **Matériel requis**
+
+* 🖥️ Raspberry Pi 4 ou 5
+* 🔌 ESP32 Nano
+* 🌡️ Capteur DHT22
+* 🧵 Fils de connexion
+* 🏠 Boîtier étanche (pour l’extérieur)
+* 📡 Connexion Wi-Fi ou Ethernet
+
+---
+
+## 🛠️ **Schéma de connexion**
+
+| DHT22 | ESP32 Nano        |
+| ----- | ----------------- |
+| VCC   | 3.3V              |
+| DATA  | D4 (PIN DIGITAL4) |
+| GND   | GND               |
+
+---
+
+## 🚀 **Installation & Configuration**
+
+### 1️⃣ **Programmer l’ESP32**
+
+* Télécharger l’IDE Arduino : [📥 Arduino IDE](https://www.arduino.cc/en/software)
+* Configurer l’ESP32-S3-Box :
+
+  * Si non visible, ajouter cette URL dans *Fichier → Préférences → URL de gestionnaire de cartes supplémentaires* :
+
+    ```
+    http://arduino.esp8266.com/stable/package_esp8266com_index.json
+    ```
+  * Choisir le bon port COM et la bonne architecture.
+* Ajouter les bibliothèques :
+
+  * DHT sensor library (`DHT.h`)
+  * ESP32 WiFi library (`WiFi.h`)
+* Modifier le code pour :
+
+  * 📶 SSID et mot de passe Wi-Fi
+  * 🌍 IP et port du serveur
+
+### 2️⃣ **Installer Raspberry Pi OS (ou Ubuntu)**
+
+* Télécharger Raspberry Pi Imager : [📥 Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+* Flasher une image 64-bit
+* Configurer SSH et Wi-Fi avant le premier démarrage
+
+### 3️⃣ **Déployer le serveur DHT-Logger**
+
+* Copier le dossier `DHT-LOGGER-main` sur le bureau
+* Créer le dossier `DHTLOGGER` et y extraire le zip
+* Modifier `server.py` pour définir IP et port
+
+### 4️⃣ **Automatiser le démarrage avec systemd ⚙️**
+
+```bash
+sudo nano /etc/systemd/system/dhtlogger.service
+```
+
+Ajouter :
+
+```ini
+[Unit]
+Description=Serveur DHT Logger
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/Desktop/DHTLOGGER/DHT-LOGGER-main/Interieur/SERVER/server.py
+WorkingDirectory=/home/pi/Desktop/DHTLOGGER/DHT-LOGGER-main/Interieur/SERVER
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Puis :
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable dhtlogger
+sudo systemctl restart dhtlogger
+sudo systemctl status dhtlogger
+```
+
+Faire de même pour le service mail si nécessaire.
+
+---
+
+## **Structure du projet**
+
+```
+DHT-Logger/
+│
+├── Arduino/Interieur/Interieur.ino      # Code Arduino pour ESP32
 │
 ├── Interieur/
 │   ├── DATA/data.csv                    # Données collectées (CSV)
-│   ├── SERVER/                          # Backend Python (API, gestion, sauvegarde…)
-│   └── WEB/                             # Interface web (HTML, CSS, JS, icônes…)
+│   ├── SERVER/                          # Backend Python
+│   └── WEB/                             # Interface web
 │
-├── .env                                 # Configuration (variables d’environnement)
+├── .env                                 # Variables d’environnement
 ├── LICENSE                              # Licence MIT
-├── README.md                            # Ce fichier
-
-```
-
-
-## Fonctionnalités principales
-
-- Lecture automatique de la température et de l’humidité (DHT22)
-- Transmission WiFi vers un serveur central
-- Stockage des mesures dans un fichier CSV
-- Interface web responsive (graphiques, historique, export CSV/Excel)
-- Authentification, gestion de compte, RGPD
-- Alertes et restrictions d’eau
-- Intégration possible avec Home Assistant et OpenWeatherMap
-
-## Schéma général
-
-```
-[Capteur DHT22] --(ESP32/ESP8266 via WiFi)--> [Serveur Python] --(CSV/MySQL)--> [Interface Web]
+├── README.md                             # Ce fichier
 ```
 
 ---
 
-## Installation logicielle
+## **Fonctionnalités principales**
 
-### 1. Matériel nécessaire
+* Lecture automatique température & humidité (DHT22)
+* Transmission Wi-Fi vers serveur central
+* Stockage des mesures CSV
+* Interface web responsive
+* Gestion utilisateur et RGPD
+* Alertes & restrictions d’eau
+* Intégration Home Assistant & OpenWeatherMap
 
-- 1 microcontrôleur ESP32 ou ESP8266
-- 1 capteur DHT22 (température/humidité)
-- Connexion WiFi stable
-- Un ordinateur ou serveur pour héberger le backend Python
+**Schéma général :**
 
-### 2. Configuration du microcontrôleur
-
-- Ouvre `Arduino/Interieur/Interieur.ino` dans l’IDE Arduino.
-- Renseigne le SSID et le mot de passe WiFi :
-	```cpp
-	const char* ssid = "VOTRE_SSID";
-	const char* password = "VOTRE_MDP";
-	```
-- Renseigne l’adresse IP ou le nom de domaine du serveur Python :
-	```cpp
-	const char* serverAddress = "ADRESSE_DU_SERVEUR";
-	```
-- Téléverse le code sur ton ESP32/ESP8266.
-
-### 3. Installation du serveur Python
-
-- Installe Python 3.8+ sur ton ordinateur/serveur.
-- Clone ce dépôt ou télécharge-le.
-- Installe les dépendances nécessaires :
-	```bash
-	pip install -r requirements.txt
-	```
-- Configure le fichier `.env` à la racine :
-	```
-	FLASK_SECRET_KEY=...
-	MAIL_USERNAME=...
-	MAIL_PASSWORD=...
-	SERVER_ADDRESS=0.0.0.0
-	SERVER_PORT=10000
-	MYSQL_HOST=...
-	MYSQL_USER=...
-	MYSQL_PASSWORD=...
-	MYSQL_DATABASE=...
-	OPENWEATHER_API_KEY=...
-	HOME_ASSISTANT_TOKEN=...
-	HOME_ASSISTANT_URL=...
-	```
-- Modifie `Interieur/SERVER/config.py` pour indiquer le chemin absolu de ton projet :
-	```python
-	BASE_DIR = "C:/chemin/vers/DHT-Logger/Interieur"
-	```
-
-### 4. Lancement du serveur
-
-- Lance le serveur Python :
-	```bash
-	python Interieur/SERVER/server.py
-	```
-- Le serveur écoute par défaut sur le port 10000.
-
-### 5. Accès à l’interface web
-
-- Ouvre un navigateur et rends-toi à l’adresse du serveur (ex : http://localhost:10000 ou http://ADRESSE_IP:10000).
-- Profite de l’interface pour visualiser les données, exporter les fichiers, consulter l’historique, etc.
+```
+[Capteur DHT22] --(ESP32/ESP8266 via Wi-Fi)--> [Serveur Python] --(CSV/MySQL)--> [Interface Web]
+```
 
 ---
 
-## Utilisation
+## **Installation logicielle**
 
-- Les mesures sont envoyées automatiquement toutes les minutes par le microcontrôleur.
-- Les données sont stockées dans `Interieur/DATA/data.csv`.
-- L’interface web permet de :
-	- Voir la température et l’humidité en temps réel.
-	- Afficher des graphiques interactifs.
-	- Télécharger les données au format CSV ou Excel.
-	- Consulter l’historique par période.
-	- Recevoir des alertes en cas de restrictions d’eau.
-	- Recevoir des alertes par mail toutes les 30 minutes si un seuil est dépassé.
-	- Gérer son compte utilisateur (connexion, inscription, mot de passe oublié…).
-	- Consulter la politique de confidentialité (RGPD).
+### 1. Matériel
+
+* ESP32 ou ESP8266
+* Capteur DHT22
+* Connexion Wi-Fi stable
+* Serveur/ordinateur pour le backend Python
+
+### 2. Configuration microcontrôleur
+
+* Ouvrir `Arduino/Interieur/Interieur.ino`
+* Paramètres Wi-Fi :
+
+```cpp
+const char* ssid = "VOTRE_SSID";
+const char* password = "VOTRE_MDP";
+```
+
+* Adresse serveur :
+
+```cpp
+const char* serverAddress = "ADRESSE_SERVEUR";
+```
+
+* Téléverser le code
+
+### 3. Installation serveur Python
+
+* Installer Python 3.8+
+* Cloner/dézipper le projet
+* Installer dépendances :
+
+```bash
+pip install -r requirements.txt
+```
+
+* Configurer `.env`
+
+* Modifier `Interieur/SERVER/config.py` pour chemin absolu :
+
+```python
+BASE_DIR = "/home/pi/Desktop/DHT-Logger/Interieur"
+```
+
+### 4. Lancer le serveur
+
+```bash
+python Interieur/SERVER/server.py
+```
+
+* Port par défaut : `10000`
+
+### 5. Accéder à l’interface web
+
+* Browser : `http://localhost:10000` ou `http://IP_SERVEUR:10000`
+* Visualiser données, historiques, export CSV/Excel
 
 ---
 
-## Personnalisation
+## **Utilisation**
 
-- Pour changer la ville ou le code postal de la météo externe, modifie la configuration dans le backend.
-- Pour ajouter d’autres capteurs, duplique et adapte le code Arduino et la gestion côté serveur.
-- Pour activer l’intégration Home Assistant ou OpenWeatherMap, renseigne les clés API dans `.env`.
- - ⚠️ Pensez à vérifier et adapter tous les fichiers JavaScript (`js/`) et Python (`SERVER/`) : certains champs, noms de variables, ou la ville peuvent nécessiter une modification pour correspondre à votre projet ou votre localisation.
+* Données envoyées chaque minute
+* Stockées dans `Interieur/DATA/data.csv`
+* Interface web :
 
-	- Exemple de fichiers/lignes à modifier :
-		- `Interieur/WEB/js/alerte.js` : ligne 1 (département)
-		- `Interieur/WEB/js/index.js` : ligne 267 (ville ou code postal)
-		- `Interieur/SERVER/api.py` : ligne 51 (ville ou paramètres API)
-		- `Interieur/SERVER/config.py` : ligne 3 (chemin du projet ou configuration)
-
----
-
-## Sécurité & RGPD
-
-- Les données personnelles sont protégées et ne sont jamais transmises à des tiers.
-- Vous pouvez exercer vos droits (accès, rectification, suppression…) en contactant l’administrateur (voir page RGPD).
+  * Température & humidité en temps réel
+  * Graphiques interactifs
+  * Export CSV/Excel
+  * Historique
+  * Alertes d’eau
+  * Notifications email toutes les 30 min
+  * Gestion des comptes
+  * RGPD
 
 ---
 
-## Licence
+## **Personnalisation**
 
-Projet sous licence MIT. Voir le fichier `LICENSE`.
+* Modifier ville/code postal pour météo
+* Ajouter capteurs en dupliquant code Arduino/backend
+* Activer Home Assistant/OpenWeatherMap dans `.env`
+* Modifier JS/Python si nécessaire :
+
+  * `WEB/js/alerte.js` → département
+  * `WEB/js/index.js` → ville/code postal
+  * `SERVER/api.py` → ville/API
+  * `SERVER/config.py` → chemin projet
 
 ---
 
-## Aide & contact
+## **Sécurité & RGPD**
 
-Pour toute question, suggestion ou bug, ouvre une issue sur GitHub ou contacte l’administrateur à l’adresse indiquée dans la page RGPD.
+* Données personnelles protégées
+* Droits d’accès, rectification et suppression via page RGPD
+
+---
+
+## **Licence**
+
+MIT License. Voir `LICENSE`
+
+---
+
+## **Aide & Contact**
+
+Pour questions, suggestions ou bugs, ouvrir une issue sur GitHub ou contacter l’administrateur via page RGPD.
+
+
