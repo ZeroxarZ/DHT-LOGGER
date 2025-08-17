@@ -2,7 +2,7 @@
 
 > Home Assistant Compatible: This project can easily integrate with Home Assistant for advanced home automation.
 
-DHT-Logger is a complete solution for monitoring, logging, and visualizing temperature and humidity using a DHT22 sensor, a microcontroller (ESP32/ESP8266), and a Python web server. The project features a modern web interface, data storage, exports, alerts, and user management.
+DHT-Logger is a complete solution for monitoring, logging, and visualizing temperature and humidity using a DHT22 sensor, a microcontroller (ESP32/ESP8266), and a Python web server. The project features a modern web interface, data storage SQL, exports, alerts, and user management.
 
 ---
 
@@ -265,7 +265,7 @@ For questions, suggestions, or bugs, open a GitHub issue or contact the administ
 
 > Compatible Home Assistant : Ce projet peut s’intégrer facilement à Home Assistant pour une domotique avancée.
 
-DHT-Logger est une solution complète pour surveiller, enregistrer et visualiser la température et l’humidité via un capteur DHT22, un microcontrôleur (ESP32/ESP8266) et un serveur web Python. L’interface est moderne, avec stockage des données, export, alertes et gestion des utilisateurs.
+DHT-Logger est une solution complète pour surveiller, enregistrer et visualiser la température et l’humidité via un capteur DHT22, un microcontrôleur (ESP32/ESP8266) et un serveur web Python. L’interface est moderne, avec stockage des données SQL, export, alertes et gestion des utilisateurs.
 
 ---
 
