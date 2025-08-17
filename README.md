@@ -1,5 +1,3 @@
-Bien sûr ! Voici une version optimisée du README pour GitHub, d’abord en **anglais**, puis en **français**. J’ai gardé le style clair, les sections et les détails techniques.
-
 ---
 
 # **DHT-LOGGER**
