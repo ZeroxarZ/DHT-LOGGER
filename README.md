@@ -124,7 +124,9 @@ DHT-Logger/
 * Wi-Fi data transmission to a central server
 * Data storage in CSV files
 * Responsive web interface (graphs, history, CSV/Excel export)
+* **Graphical history of temperature and humidity**
 * Authentication, user management, GDPR compliance
+* **Google Authenticator 2FA support**
 * Alerts & water restrictions
 * Home Assistant & OpenWeatherMap integration
 
@@ -387,7 +389,9 @@ DHT-Logger/
 * Transmission Wi-Fi vers serveur central
 * Stockage des mesures CSV
 * Interface web responsive
+* **Historique graphique de la température et de l’humidité**
 * Gestion utilisateur et RGPD
+* **Support Google Authenticator (2FA)**
 * Alertes & restrictions d’eau
 * Intégration Home Assistant & OpenWeatherMap
 
