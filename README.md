@@ -121,7 +121,6 @@ DHT-Logger/
 ├── README.md                            # Ce fichier
 ```
 
----
 
 ## Fonctionnalités principales
 
