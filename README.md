@@ -119,6 +119,7 @@ DHT-Logger/
 ├── .env                                 # Configuration (variables d’environnement)
 ├── LICENSE                              # Licence MIT
 ├── README.md                            # Ce fichier
+
 ```
 
 
