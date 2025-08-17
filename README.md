@@ -243,13 +243,6 @@ Make sure to check and adapt some JavaScript (`js/`) and Python (`SERVER/`) file
 
 ---
 
-## **Security & GDPR**
-
-* Personal data is protected and never shared
-* Users can request access, correction, or deletion via GDPR page
-
----
-
 ## **License**
 
 MIT License. See `LICENSE`
@@ -489,13 +482,6 @@ Pensez à vérifier et adapter certains fichiers JavaScript (`js/`) et Python (`
 * `Interieur/WEB/js/index.js` : ligne 267 (ville ou code postal)
 * `Interieur/SERVER/api.py` : ligne 51 (ville ou paramètres API)
 * `Interieur/SERVER/config.py` : ligne 3 (chemin du projet ou configuration)
-
----
-
-## **Sécurité & RGPD**
-
-* Données personnelles protégées
-* Droits d’accès, rectification et suppression via page RGPD
 
 ---
 
