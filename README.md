@@ -87,8 +87,6 @@ WantedBy=multi-user.target
 
 💾 Sauvegarder avec CTRL + X, puis Y et Entrée.
 
-Vous pouvez créer d'autres services pour d'autres modules (ex : `dhtloggermailinterieur.service`).
-
 Ensuite, rechargez la configuration systemd et activez le service au démarrage avec les commandes suivantes :
 
 ```bash
@@ -97,6 +95,12 @@ sudo systemctl enable dhtlogger
 sudo systemctl restart dhtlogger
 sudo systemctl status dhtlogger
 ```
+
+Faites la même chose pour le service mail (`dhtloggermailinterieur.service`) si vous souhaitez automatiser l'envoi des alertes par email.
+
+```
+
+
 
 ---
 
@@ -224,6 +228,13 @@ DHT-Logger/
 - Pour changer la ville ou le code postal de la météo externe, modifie la configuration dans le backend.
 - Pour ajouter d’autres capteurs, duplique et adapte le code Arduino et la gestion côté serveur.
 - Pour activer l’intégration Home Assistant ou OpenWeatherMap, renseigne les clés API dans `.env`.
+ - ⚠️ Pensez à vérifier et adapter tous les fichiers JavaScript (`js/`) et Python (`SERVER/`) : certains champs, noms de variables, ou la ville peuvent nécessiter une modification pour correspondre à votre projet ou votre localisation.
+
+	- Exemple de fichiers/lignes à modifier :
+		- `Interieur/WEB/js/alerte.js` : ligne 1 (département)
+		- `Interieur/WEB/js/index.js` : ligne 267 (ville ou code postal)
+		- `Interieur/SERVER/api.py` : ligne 51 (ville ou paramètres API)
+		- `Interieur/SERVER/config.py` : ligne 3 (chemin du projet ou configuration)
 
 ---
 

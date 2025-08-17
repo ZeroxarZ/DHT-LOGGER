@@ -1,4 +1,4 @@
-const codeDept = "76"; // Ton département
+const codeDept = "XX"; // Ton département
 fetch(`/api/secheresse?code=${codeDept}`)
   .then(response => response.json())
   .then(dep => {

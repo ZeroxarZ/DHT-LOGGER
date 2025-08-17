@@ -48,7 +48,7 @@ def api_weather():
 
 @api_bp.route("/api/uv")
 def api_uv():
-    city = request.args.get("city", "Le Petit-Quevilly,FR")
+    city = request.args.get("city", "TA VILLE,FR") # Remplacez par la ville souhaitée
     api_key = OPENWEATHER_API_KEY
     geo_url = f"https://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={api_key}"
     geo_resp = requests.get(geo_url)
@@ -76,7 +76,7 @@ def api_secheresse_all():
 
 @api_bp.route("/api/secheresse")
 def api_secheresse():
-    code_dept = request.args.get("code", "76")
+    code_dept = request.args.get("code", "XX") # Remplacez par le code de votre département
     try:
         resp = requests.get("https://api.vigieau.beta.gouv.fr/api/departements", timeout=5)
         resp.raise_for_status()
