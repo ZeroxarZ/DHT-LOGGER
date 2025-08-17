@@ -257,7 +257,7 @@ MIT License. See `LICENSE`
 
 ## **Support & Contact**
 
-For questions, suggestions, or bugs, open a GitHub issue or contact the administrator listed on the GDPR page.
+For questions, suggestions, or bugs, open a GitHub issue.
 
 ---
 
@@ -505,6 +505,6 @@ MIT License. Voir `LICENSE`
 
 ## **Aide & Contact**
 
-Pour questions, suggestions ou bugs, ouvrir une issue sur GitHub ou contacter l’administrateur via page RGPD.
+Pour questions, suggestions ou bugs, ouvrir une issue sur GitHub.
 
 
