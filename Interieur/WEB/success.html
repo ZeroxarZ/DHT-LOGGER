@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Succès</title>
+    <link rel="icon" href="icons/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="success-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h1>{{ title or "Succès" }}</h1>
+        <p>{{ message or "L'opération a été réalisée avec succès." }}</p>
+        <div class="button-container">
+            {% if redirect_url %}
+            <a href="{{ redirect_url }}" class="button">Continuer</a> {% else %}
+            <a href="/" class="button">Retour à l'accueil</a> {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

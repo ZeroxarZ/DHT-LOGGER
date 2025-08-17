@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Activation de la double authentification</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enable_2fa.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Activer la double authentification</h1>
+        <p style="margin-bottom:0.5em;">Utilisateur : <b>{{ username }}</b></p>
+        <p>Scanne ce QR code avec Google Authenticator :</p>
+        <img src="/admin/qrcode/{{ user_id }}" alt="QR Code 2FA">
+        <p>Ou entre ce code manuellement :</p>
+        <div style="display:flex;justify-content:center;align-items:center;gap:0.5em;flex-wrap:wrap;">
+            <code id="manual-code">{{ otp_uri.split('secret=')[1].split('&')[0] }}</code>
+            <button id="copy-btn" type="button" style="padding:0.4em 1em;border-radius:6px;border:none;background:#1976d2;color:#fff;cursor:pointer;font-weight:500;">Copier</button>
+        </div>
+        <form action="{{ url_for('users.confirm_enable_2fa_user', user_id=user_id) }}" method="post" style="margin-top:2em;">
+            <label for="otp_code" style="display:block;margin-bottom:0.5em;">Entrez le code 2FA généré :</label>
+            <input type="text" id="otp_code" name="otp_code" required placeholder="Code 2FA" style="padding:0.6em;width:80%;max-width:220px;border-radius:6px;border:1px solid #ccc;text-align:center;"> {% if error %}
+            <div style="color:#d32f2f;font-weight:600;margin-top:0.7em;margin-bottom:0.5em;">{{ error }}</div>
+            {% endif %}
+            <button type="submit" class="profil-btn" style="margin-top:1em;padding:0.4em 1.2em;border-radius:6px;border:none;background:#43a047;color:#fff;cursor:pointer;font-size:1em;font-weight:600;box-shadow:0 2px 8px #0002;transition:background 0.2s;">Confirmer l'activation</button>
+        </form>
+        <a href="/admin">Retour au panel admin</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/enable_2fa.js') }}" type="module"></script>
+    </script>
+</body>
+
+</html>

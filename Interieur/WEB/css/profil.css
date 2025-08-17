@@ -1,0 +1,180 @@
+body {
+    background: #f4f6f8;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    margin-top: 18px;
+    padding: 1.2em 0.7em 2em 0.7em;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    margin-top: 0.2em;
+    color: #1976d2;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    word-break: break-word;
+}
+
+.section-title {
+    font-size: 1.08em;
+    color: #1976d2;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    text-align: left;
+}
+
+form {
+    display: block;
+    margin: 0.5em 0 0.5em 0;
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3em;
+    color: #333;
+    font-size: 1em;
+    text-align: left;
+    margin-left: 0.2em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.7em;
+    margin: 0.5em 0 1em 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background: #fafbfc;
+    transition: border 0.2s;
+    display: block;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: 1.5px solid #1976d2;
+    outline: none;
+}
+
+.profil-btn {
+    margin: 1em auto 0.5em auto;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 6px;
+    background: #1976d2;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    max-width: 220px;
+    display: block;
+    font-weight: 500;
+}
+
+.profil-btn:hover {
+    background: #0d47a1;
+}
+
+.danger {
+    background: #e53935;
+}
+
+.danger:hover {
+    background: #b71c1c;
+}
+
+.info {
+    color: #888;
+    font-size: 0.97em;
+    margin-bottom: 1em;
+}
+
+hr {
+    margin: 2em 0 1em 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+a {
+    display: block;
+    margin-top: 2em;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    word-break: break-word;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0d47a1;
+}
+
+.retour-btn {
+    background: #1976d2;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 18px;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+
+.retour-btn:hover {
+    background: #125ea7;
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100vw;
+        margin: 0;
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1em 0.2em 1.5em 0.2em;
+    }
+    h1 {
+        font-size: 1.3em;
+    }
+    .profil-btn {
+        font-size: 1em;
+        padding: 0.7em 0.5em;
+        max-width: 100vw;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 1em;
+        padding: 0.5em;
+        width: 100%;
+        max-width: 100vw;
+    }
+    label {
+        margin-left: 0;
+    }
+}

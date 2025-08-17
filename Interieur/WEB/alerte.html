@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Alerte Sécheresse - DHT Logger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/alerte.css" rel="stylesheet">
+</head>
+<body>
+    <div class="alert-container">
+        <div class="alert-icon">🌞</div>
+        <h1>Alerte Sécheresse Seine-Maritime</h1>
+        <div class="alert-details">
+            <span id="niveau-secheresse">Chargement des données Vigieau...</span>
+            <ul style="text-align:left; margin: 10px auto 0 auto; max-width: 340px; color:#b38f00;">
+                <li>Limitez l'arrosage des jardins et espaces verts</li>
+                <li>Évitez le lavage des véhicules</li>
+                <li>Réduisez votre consommation d'eau</li>
+                <li>Respectez les arrêtés en vigueur</li>
+            </ul>
+        </div>
+        <p>
+            Pour plus d'informations, consultez&nbsp;:<br>
+            <a href="https://vigieau.gouv.fr/" target="_blank">vigieau.gouv.fr</a>
+        </p>
+        <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="dept-search" maxlength="3" placeholder="Numéro du département (ex : 76)">
+        <button id="btn-search">Rechercher</button>
+    </div>
+    <div id="dept-info" class="dept-info"></div>
+    <div id="carte-secheresse" style="max-width: 500px; width: 100%; margin: 20px auto;"></div>
+    <div style="font-size:13px;color:#888;margin-top:4px;">
+        <b>SUP</b> : eaux superficielles &nbsp;|&nbsp; <b>SOU</b> : eaux souterraines &nbsp;|&nbsp; <b>AEP</b> : eau potable
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/rgpd">Politique de confidentialité</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://github.com/ZeroxarZ" target="_blank" aria-label="GitHub">
+                <img alt="GitHub" height="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" width="24">
+            </a>
+            <a href="https://instagram.com/Etienne.mnti" target="_blank" aria-label="Instagram">
+                <img alt="Instagram" height="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" width="24">
+            </a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2023 - 2025 Etienne MONTI. Tous droits réservés.
+        </div>
+    </footer>
+    <script src="https://unpkg.com/d3@7"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="js/alerte.js" type="module">
+    </script>
+</body>
+</html>

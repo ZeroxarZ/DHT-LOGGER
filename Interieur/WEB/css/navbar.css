@@ -1,0 +1,208 @@
+/* ----- NAVBAR GÉNÉRALE ----- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 20px;
+    gap: 15px;
+}
+
+
+/* Liens non-connecté */
+
+.nav-link {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+
+/* Couleurs */
+
+.login-link {
+    color: #007bff;
+}
+
+.login-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.register-link {
+    color: #28a745;
+}
+
+.register-link:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+
+/* ----- MENU UTILISATEUR CONNECTÉ ----- */
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-dropdown button {
+    background-color: transparent;
+    color: #007bff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown button:hover {
+    background-color: #f1f1f1;
+}
+
+.user-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.user-dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown-content a:hover {
+    background-color: #f0f0f0;
+}
+
+.user-dropdown:hover .user-dropdown-content {
+    display: block;
+}
+
+
+/* ----- USER BAR AVEC AVATAR ET BOUTON ----- */
+
+.user-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+    margin: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.user-bar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-bar span {
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+}
+
+.user-bar button {
+    margin-left: 15px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: none;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.user-bar button:hover {
+    background: #c0392b;
+}
+
+
+/* ----- STYLES BOUTONS CONNEXION/INSCRIPTION ARRONDIS ----- */
+
+.btn.auth-btn {
+    display: inline-block;
+    font-weight: bold;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 28px;
+    margin-right: 12px;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.login-btn {
+    background: #42a5f5;
+}
+
+.login-btn:hover {
+    background: #1e88e5;
+}
+
+.register-btn {
+    background: #43c97e;
+}
+
+.register-btn:hover {
+    background: #2eae63;
+}
+
+
+/* ----- RESPONSIVE ----- */
+
+@media (max-width: 480px) {
+    .navbar {
+        justify-content: center;
+        gap: 10px;
+        margin: 10px;
+    }
+    .nav-link {
+        padding: 10px 16px;
+        font-size: 1.1em;
+    }
+    .user-bar {
+        justify-content: center;
+        gap: 8px;
+    }
+    .user-bar button {
+        padding: 8px 14px;
+        font-size: 1em;
+    }
+    .user-dropdown-content {
+        right: auto;
+        left: 0;
+    }
+    .btn.auth-btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0 0 0;
+        padding: 14px 0;
+        font-size: 1.15em;
+        text-align: center;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

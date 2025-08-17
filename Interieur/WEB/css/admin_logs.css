@@ -1,0 +1,96 @@
+/* Style général */
+
+body {
+    background: #f4f6f8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    padding: 2.5em 2em 2em 2em;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+    color: #222;
+}
+
+
+/* Table des logs */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 2em auto;
+    background: #fafbfc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(25, 118, 210, 0.05);
+}
+
+th,
+td {
+    padding: 1em 0.7em;
+    text-align: left;
+}
+
+th {
+    background: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+tr:nth-child(even) {
+    background: #f0f4fa;
+}
+
+tr:hover {
+    background: #e3eaf6;
+}
+
+td {
+    color: #333;
+    font-size: 1em;
+    border-bottom: 1px solid #e0e7ef;
+}
+
+a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #125ea7;
+    text-decoration: underline;
+}
+
+a.back-link {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 28px;
+    background: #1976d2;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.08em;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+
+a.back-link:hover {
+    background: #125ea7;
+    color: #fff;
+    text-decoration: none;
+}

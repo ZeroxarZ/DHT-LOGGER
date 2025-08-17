@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation email</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/profil.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% if success %}
+            <div class="success">{{ success }}</div>
+            <a href="/profil" class="profil-btn retour-btn">Retour au profil</a>
+        {% elif error %}
+            <div class="error">{{ error }}</div>
+            <a href="/profil" class="profil-btn retour-btn">Retour au profil</a>
+        {% else %}
+            <div>Traitement en cours...</div>
+        {% endif %}
+    </div>
+</body>
+</html>

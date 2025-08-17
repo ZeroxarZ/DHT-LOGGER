@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vérification email</title>
+    <link href="css/verify_email.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        {% if success %}
+        <div class="success-message">{{ success }}</div>
+        <a href="/login">Se connecter</a> {% elif error %}
+        <div class="error-message">{{ error }}</div>
+        <a href="/">Retour à l'accueil</a> {% endif %}
+    </div>
+</body>
+
+</html>

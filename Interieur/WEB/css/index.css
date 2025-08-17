@@ -1,0 +1,374 @@
+:root {
+    /* Couleurs mode clair */
+    --primary-color: #3498db;
+    --hover-color: #2980b9;
+    --accent-color: #2ecc71;
+    --accent-hover: #27ae60;
+    --bg-color: #f5f7fa;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+
+/* Couleurs mode sombre */
+
+.dark-mode {
+    --bg-color: #1e1e2f;
+    --text-color: #f0f0f0;
+    --card-bg: #2b2b3d;
+    --shadow-light: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    border-radius: 0 0 12px 12px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .navbar {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+
+/* Boutons */
+
+.btn.auth-btn {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    outline: none;
+}
+
+.login-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    margin-left: 8px;
+}
+
+.login-btn:hover,
+.login-btn:focus {
+    background-color: var(--hover-color);
+    color: #fff;
+}
+
+.register-btn {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+    margin-left: 8px;
+}
+
+.register-btn:hover,
+.register-btn:focus {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+
+/* Dark mode boutons */
+
+.dark-mode .login-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.dark-mode .login-btn:hover,
+.dark-mode .login-btn:focus {
+    background-color: var(--hover-color);
+    color: #fff;
+}
+
+.dark-mode .register-btn {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+}
+
+.dark-mode .register-btn:hover,
+.dark-mode .register-btn:focus {
+    background-color: #1e8449;
+    border-color: #1e8449;
+    color: #fff;
+}
+
+
+/* Logo */
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo-container img,
+#logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 30px auto 10px;
+}
+
+
+/* Button container */
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.button-container button,
+.button-container a.btnlink {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.button-container button:hover,
+.button-container a.btnlink:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.dark-mode .button-container button,
+.dark-mode .button-container a.btnlink {
+    background-color: #444;
+}
+
+
+/* Canvas */
+
+canvas {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    margin: 20px auto;
+    display: block;
+}
+
+
+/* Titres */
+
+h1,
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+
+/* Zone Infos Courantes */
+
+#currentInfo {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    text-align: center;
+    max-width: 900px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Logs */
+
+#logs {
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    max-width: 900px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#logs h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+#logList {
+    max-height: 250px;
+    overflow-y: auto;
+    font-family: monospace;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    overflow-wrap: break-word;
+    color: #000000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+
+/* Carte météo */
+
+.weather-card {
+    background-color: #e8f4ff;
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+    color: #333;
+    max-width: 600px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .weather-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+.weather-inner h3 {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.weather-group p {
+    margin: 6px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    word-break: break-word;
+    color: inherit;
+}
+
+.weather-group i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.weather-group .highlight {
+    font-weight: bold;
+    font-size: 1.05em;
+    color: inherit;
+}
+
+
+/* Alert bubble */
+
+.alert-bubble {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    pointer-events: none;
+    overflow-wrap: break-word;
+}
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .button-container {
+        flex-direction: column;
+    }
+    #currentInfo,
+    #logs,
+    .weather-card {
+        max-width: 100%;
+    }
+}

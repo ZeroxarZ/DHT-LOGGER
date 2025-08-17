@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Graphique Température et Humidité</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/historique.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Logo ajouté -->
+    <div class="logo-container" style="text-align: center; margin-bottom: 1rem;"><img alt="Logo Campus" src="icons/campus.png" style="max-width: 150px; height: auto;"></div>
+    <div class="button-container">
+        <button class="nav-button" id="toggleDarkMode"><i class="fas fa-moon"></i> Activer le mode sombre</button> <a class="nav-button" href="/"><i class="fas fa-home"></i> Page principale</a>
+    </div>
+    <div class="container">
+        <h2>Historique des données précédentes</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Sélectionnez une <strong>date et heure de début</strong> et une <strong>date et heure de fin</strong> pour afficher les données.</p>
+        <div class="calendar-container">
+            <input id="startDateTime" type="datetime-local"> <input id="endDateTime" type="datetime-local"> <button id="filterBtn"><i class="fas fa-filter"></i> Filtrer par Date & Heure</button> <button id="downloadCSV"><i class="fas fa-download"></i> Télécharger CSV</button>
+        </div>
+        <h3>Température (°C)</h3>
+        <canvas id="temperatureChart"></canvas>
+        <h3>Humidité (%)</h3>
+        <canvas id="humidityChart"></canvas>
+    </div>
+    <footer>
+        <br><br>
+        <a href="/rgpd">Politique de confidentialité</a>
+        <p></p>
+        <p>&copy; 2023 - 2025 Etienne MONTI. Tous droits réservés.</p>
+        <p></p>
+        <p>
+            <a href="https://github.com/ZeroxarZ" target="_blank"><img alt="GitHub" height="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" width="24"></a>
+            <a href="https://instagram.com/Etienne.mnti" target="_blank"><img alt="Instagram" height="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" width="24"></a>
+        </p>
+    </footer>
+    <script src="js/historique.js" type="module">
+    </script>
+</body>
+
+</html>

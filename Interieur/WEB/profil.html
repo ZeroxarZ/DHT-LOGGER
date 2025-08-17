@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mon profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/profil.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mon profil</h1>
+        <p style="margin-bottom:1.5em;">
+            Utilisateur : <b>{{ username }}</b><br> Date de création du compte : <b>{{ creation_date }}</b><br> Dernière connexion : <b>{{ last_login }}</b>
+        </p>
+
+        <!-- Email -->
+        <div class="section-title">Adresse email d'alerte</div>
+        <form action="/update_email" method="post">
+            <input id="email" name="email" type="email" required value="{{ email or '' }}" placeholder="Votre email">
+            <button type="submit" class="profil-btn">Mettre à jour l'email</button>
+            <p style="font-size:14px;color:#607d8b;margin-top:8px;">
+                ⚠️ Un email de confirmation vous sera envoyé. Le changement ne sera effectif qu'après validation du lien reçu.
+            </p>
+        </form>
+
+        <!-- Mot de passe -->
+        <div class="section-title">Changer le mot de passe</div>
+        <form action="/change_password" method="post">
+            <input id="old_password" name="old_password" type="password" required placeholder="Ancien mot de passe">
+            <input id="new_password" name="new_password" type="password" required placeholder="Nouveau mot de passe">
+            <button type="submit" class="profil-btn">Changer le mot de passe</button>
+        </form>
+
+        <!-- 2FA -->
+        <div class="section-title">Double authentification</div>
+        {% if has_2fa %}
+        <p>Double authentification : <b style="color:#388e3c;">Activée</b></p>
+        <form action="/disable_2fa" method="post">
+            <button type="submit" class="profil-btn">Désactiver la double authentification</button>
+        </form>
+        {% else %}
+        <p>Double authentification : <b style="color:#e53935;">Désactivée</b></p>
+        <a href="/enable_2fa" class="profil-btn">Activer la double authentification</a> {% endif %}
+
+        <!-- Télécharger ses données -->
+        <div class="section-title">Données personnelles</div>
+        <a href="/download_my_data" class="profil-btn" style="background:#607d8b;">Télécharger mes données</a>
+
+        <!-- Suppression du compte -->
+        <hr>
+        <form action="/request_delete_account" method="post" onsubmit="return confirm('Un email de confirmation va vous être envoyé. Confirmer ?');">
+            <button type="submit" class="profil-btn danger">Demander la suppression du compte</button>
+        </form>
+        <a href="/" class="profil-btn retour-btn">Retour à l'accueil</a>
+    </div>
+    <script src="js/profil.js" type="module"></script>
+</body>
+
+</html>

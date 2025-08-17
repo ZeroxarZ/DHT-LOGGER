@@ -1,0 +1,81 @@
+    body {
+        background: linear-gradient(135deg, #e0ffe7 0%, #f6faff 100%);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+    }
+    
+    .container {
+        max-width: 400px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px #0001;
+        padding: 2.5em 2em 2em 2em;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .success-icon {
+        font-size: 3.5em;
+        color: #2ecc71;
+        margin-bottom: 0.6em;
+        animation: pop 0.5s;
+    }
+    
+    @keyframes pop {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        80% {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    h1 {
+        color: #2ecc71;
+        margin-bottom: 0.4em;
+        font-size: 2em;
+        letter-spacing: 0.02em;
+    }
+    
+    p {
+        color: #444;
+        font-size: 1.13em;
+        margin-bottom: 1.7em;
+        line-height: 1.5;
+    }
+    
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        margin-top: 1em;
+    }
+    
+    a.button {
+        display: inline-block;
+        background: linear-gradient(90deg, #43a047 60%, #1976d2 100%);
+        color: #fff;
+        padding: 0.7em 2em;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.07em;
+        box-shadow: 0 2px 8px #0002;
+        transition: background 0.18s, box-shadow 0.18s;
+        border: none;
+        outline: none;
+        text-align: center;
+    }
+    
+    a.button:hover {
+        background: linear-gradient(90deg, #1976d2 60%, #43a047 100%);
+        box-shadow: 0 4px 16px #0003;
+    }

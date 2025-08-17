@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Panel Admin</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="css/panel.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container" style="text-align: center; margin-bottom: 1rem;"><img alt="Logo Campus" src="icons/campus.png" style="max-width: 150px; height: auto;"></div>
+        <h2>Configuration des alertes</h2>
+        <form id="alertForm" name="alertForm">
+            <label for="temp_min">Température min :</label> <input id="temp_min" name="temp_min" placeholder="Ex : 15.0" required="" step="0.1" type="number"> <label for="temp_max">Température max :</label> <input id="temp_max" name="temp_max" placeholder="Ex : 30.0"
+                required="" step="0.1" type="number"> <label for="humidity_min">Humidité min :</label> <input id="humidity_min" name="humidity_min" placeholder="Ex : 40.0" required="" step="0.1" type="number"> <label for="humidity_max">Humidité max :</label>            <input id="humidity_max" name="humidity_max" placeholder="Ex : 80.0" required="" step="0.1" type="number"> <button type="submit">Sauvegarder</button>
+        </form>
+        <div class="button-container">
+            <button id="darkModeBtn" type="button"><i class="fa-solid fa-moon"></i> Mode Sombre</button> <a class="return-index" href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+        </div>
+    </div>
+    <script src="js/panel.js" type="module"></script>
+</body>
+
+</html>

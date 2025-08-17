@@ -1,0 +1,99 @@
+      :root {
+         --primary-color: #3498db;
+         --hover-color: #2980b9;
+         --accent-color: #2ecc71;
+         --bg-color: #f5f7fa;
+         --text-color: #333;
+         --dark-bg: #1e1e2f;
+         --dark-text: #f0f0f0;
+         --card-bg: #ffffff;
+         --dark-card-bg: #2b2b3d;
+     }
+     
+     body {
+         font-family: 'Segoe UI', sans-serif;
+         background-color: var(--bg-color);
+         color: var(--text-color);
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         transition: all 0.3s ease;
+     }
+     
+     form {
+         background-color: var(--card-bg);
+         padding: 2.5rem 3rem;
+         border-radius: 12px;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+         width: 320px;
+         text-align: center;
+     }
+     
+     h1 {
+         font-weight: 600;
+         margin-bottom: 2rem;
+         color: var(--primary-color);
+     }
+     
+     label {
+         display: block;
+         margin: 0.8rem 0 0.3rem;
+         text-align: left;
+         font-weight: 600;
+     }
+     
+     input[type="text"],
+     input[type="password"] {
+         width: 100%;
+         padding: 10px 12px;
+         border: 1.5px solid #ccc;
+         border-radius: 8px;
+         font-size: 1rem;
+         transition: border-color 0.3s ease;
+         box-sizing: border-box;
+     }
+     
+     input[type="text"]:focus,
+     input[type="password"]:focus {
+         border-color: var(--primary-color);
+         outline: none;
+     }
+     
+     button {
+         margin-top: 1.8rem;
+         width: 100%;
+         padding: 12px 0;
+         background-color: var(--primary-color);
+         color: white;
+         border: none;
+         border-radius: 10px;
+         font-weight: 700;
+         font-size: 1.1rem;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+     }
+     
+     button:hover {
+         background-color: var(--hover-color);
+     }
+     
+     p {
+         margin-top: 1.5rem;
+         font-size: 0.9rem;
+         color: #555;
+     }
+     
+     p a {
+         color: var(--primary-color);
+         text-decoration: none;
+         font-weight: 600;
+         transition: color 0.3s ease;
+     }
+     
+     p a:hover {
+         color: var(--hover-color);
+         text-decoration: underline;
+     }

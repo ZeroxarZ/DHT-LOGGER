@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Panel Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/icons/favicon.png" rel="icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_panel.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="/icons/campus.png" alt="Logo Campus">
+    </div>
+
+    <div class="dark-toggle-container">
+        <button id="darkModeToggle">Mode sombre</button>
+    </div>
+
+    <div class="container">
+        <h1>Administration des utilisateurs</h1>
+
+        <a href="/admin/logs" class="nav-button" style="display:inline-block; margin-bottom:1.5em;">
+            <i class="fa-solid fa-book"></i> Voir les logs d’administration
+        </a>
+
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Rechercher un utilisateur...">
+        </div>
+
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom d'utilisateur</th>
+                    <th>Admin</th>
+                    <th>Panel</th>
+                    <th>Email d'alerte</th>
+                    <th>Nouveau mot de passe</th>
+                    <th>Actions</th>
+                    <th>Actif</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td data-label="ID">{{ user[0] }}</td>
+                    <td data-label="Nom d'utilisateur">{{ user[1] }}</td>
+                    <td data-label="Admin">
+                        <form method="POST" action="/admin/update_user/{{ user[0] }}">
+                            <label class="switch">
+                  <input type="checkbox" name="is_admin" {% if user[2] == 1 %}checked{% endif %}>
+                  <span class="slider"></span>
+                </label>
+                    </td>
+                    <td data-label="Panel">
+                        <label class="switch">
+                  <input type="checkbox" name="can_access_panel" {% if user[3] == 1 %}checked{% endif %}>
+                  <span class="slider"></span>
+                </label>
+                    </td>
+                    <td data-label="Email">
+                        <input type="email" name="email" value="{{ user[4] or '' }}" placeholder="Adresse email d'alerte" required>
+                    </td>
+                    <td data-label="Nouveau mot de passe">
+                        <input type="password" name="new_password" placeholder="Laisser vide si inchangé" onkeydown="if(event.key==='Enter'){ this.form.submit(); }">
+                    </td>
+                    <td data-label="Actions" class="actions-cell">
+                        <button type="submit" title="Enregistrer les modifications">
+                  <i class="fa-solid fa-floppy-disk"></i>
+                </button>
+                        </form>
+
+                        <form method="POST" action="/admin/delete_user/{{ user[0] }}" onsubmit="return confirm('Supprimer cet utilisateur ?')">
+                            <button type="submit" class="delete-btn" title="Supprimer utilisateur">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                        </form>
+
+                        <form method="GET" action="/admin/enable_2fa/{{ user[0] }}">
+                            <button type="submit" class="a2f-btn" title="Activer 2FA" {% if user[5] %}disabled style="opacity:0.5;cursor:not-allowed;" {% endif %}>
+                  <i class="fa-solid fa-shield-halved"></i> 2FA
+                </button>
+                        </form>
+
+                        <form method="POST" action="/admin/disable_2fa/{{ user[0] }}" onsubmit="return confirm('Désactiver la double authentification pour cet utilisateur ?');">
+                            <button type="submit" class="a2f-btn" title="Désactiver 2FA">
+                  <i class="fa-solid fa-shield-slash"></i> Désactiver 2FA
+                </button>
+                        </form>
+                    </td>
+                    <td data-label="Actif">
+                        <form method="POST" action="/admin/toggle_active/{{ user[0] }}">
+                            <button type="submit" class="active-btn {% if user[6] == 1 %}active-btn-disable{% else %}active-btn-enable{% endif %}" title="{{ 'Désactiver' if user[6] == 1 else 'Réactiver' }} le compte">
+                  {{ 'Désactiver' if user[6] == 1 else 'Réactiver' }}
+                </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer-actions">
+            <a href="/" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Retour à l'accueil
+            </a>
+            <form id="toggle-homeassistant-form" method="post" action="/admin/toggle_homeassistant">
+                <button type="submit" class="homeassistant-btn">
+                    <i class="fa-solid fa-house-signal"></i>
+                    {% if homeassistant_enabled %}
+                        Désactiver l'envoi vers Home Assistant
+                    {% else %}
+                        Activer l'envoi vers Home Assistant
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+
+        <script src="/js/admin_panel.js" type="module"></script>
+    </div>
+</body>
+</html>

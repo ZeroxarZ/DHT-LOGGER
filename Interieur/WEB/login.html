@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/login" method="post">
+            <div class="logo-container" style="text-align: center; margin-bottom: 1rem;">
+                <img alt="Logo Campus" src="icons/campus.png" style="max-width: 150px; height: auto;">
+            </div>
+            <h1>Connexion</h1>
+            <label for="username">Nom d'utilisateur :</label>
+            <input id="username" name="username" required type="text" value="{{ username|default('') }}">
+            <label for="password">Mot de passe :</label>
+            <input id="password" name="password" required type="password">
+            <button type="submit">Se connecter</button> {% if error %}
+            <div style="color:#e53935; font-weight:600; margin:1.5em auto 0 auto; text-align:center; max-width:100%; box-sizing:border-box; padding:0.7em 0.5em; word-break:break-word;">
+                {{ error }}
+            </div>
+            {% endif %}
+            <p style="text-align:center; margin-top:2em;">Pas encore inscrit ? <a href="/register">Inscrivez-vous ici</a></p>
+            <p style="text-align:center; margin-top:1em;">
+                Vous n'avez pas reçu de mail de vérification ? <a href="/resend_email">Cliquez ici</a>
+            </p>
+            <p style="text-align:center; margin-top:1em;">
+                <a href="/forgot_password">Mot de passe oublié ?</a>
+            </p>
+            <a href="/rgpd" style="display:block; text-align:center; margin-top:1em;">Politique de confidentialité</a>
+        </form>
+    </div>
+    <script src="js/login.js" type="module"></script>
+</body>
+
+</html>

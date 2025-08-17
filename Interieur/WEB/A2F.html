@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Authentification à deux facteurs</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <form action="/2fa" method="post">
+        <div class="logo-container" style="text-align: center; margin-bottom: 1rem;">
+            <img alt="Logo Campus" src="icons/campus.png" style="max-width: 150px; height: auto;">
+        </div>
+        <h1>Code 2FA requis</h1>
+        <label for="otp_code">Code 2FA :</label>
+        <input id="otp_code" name="otp_code" required type="text" autocomplete="one-time-code">
+        <button type="submit">Valider</button>
+        <br><br>
+        <a href="/login">Retour</a>
+    </form>
+</body>
+
+</html>

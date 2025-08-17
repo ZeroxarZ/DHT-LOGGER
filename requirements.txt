@@ -1,0 +1,10 @@
+# Fichier requirements.txt pour DHT-Logger
+Flask
+Flask-Mail
+Flask-Limiter
+Flask-Cors
+python-dotenv
+mysql-connector-python
+requests
+openpyxl
+pandas

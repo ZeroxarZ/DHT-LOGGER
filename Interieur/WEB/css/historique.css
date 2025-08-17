@@ -1,0 +1,151 @@
+:root {
+    --primary-color: #3498db;
+    --hover-color: #2980b9;
+    --accent-color: #2ecc71;
+    --bg-color: #f5f7fa;
+    --text-color: #333;
+    --dark-bg: #1e1e2f;
+    --dark-text: #f0f0f0;
+    --card-bg: #ffffff;
+    --dark-card-bg: #2b2b3d;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.dark-mode .section,
+.dark-mode canvas {
+    background-color: var(--dark-card-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h2,
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    color: inherit;
+}
+
+.calendar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.calendar-container input[type="datetime-local"],
+.calendar-container button {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: var(--card-bg);
+    transition: 0.3s ease;
+}
+
+.dark-mode .calendar-container input[type="datetime-local"],
+.dark-mode .calendar-container button {
+    background-color: var(--dark-card-bg);
+    border-color: #444;
+    color: var(--dark-text);
+}
+
+.calendar-container button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.calendar-container button:hover {
+    background-color: var(--hover-color);
+}
+
+.button-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.button-container .nav-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.button-container .nav-button:hover {
+    background-color: var(--hover-color);
+}
+
+.dark-mode .button-container .nav-button {
+    background-color: #444;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 20px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+footer a {
+    text-decoration: none;
+    color: #666;
+}
+
+footer a:hover {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .calendar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .calendar-container input,
+    .calendar-container button {
+        width: 90%;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .button-container .nav-button {
+        width: 90%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Température et Humidité</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="icons/favicon.png">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar" id="navBar">
+        <div class="nav-left">
+            <!-- Ajoute ici des liens à gauche si besoin -->
+        </div>
+        <div class="nav-right" id="authLinks">
+            <a href="/login" class="btn auth-btn login-btn">Connexion</a>
+            <a href="/register" class="btn auth-btn register-btn">Inscription</a>
+        </div>
+    </nav>
+    <div class="logo-container" style="text-align: center; margin-bottom: 1rem;"><img alt="Logo Campus" src="icons/campus.png" style="max-width: 150px; height: auto;"></div>
+    <div class="button-container">
+        <button id="themeToggle"><i class="bi bi-moon-fill"></i> Changer de Thème</button> <button id="downloadButton"><i class="bi bi-filetype-csv"></i> Télécharger CSV</button> <button id="downloadExcelButton"><i class="bi bi-filetype-xlsx"></i> Télécharger Excel</button>        <a class="btnlink" href="/historique"><i class="fas fa-chart-line" style="margin-right: 6px;"></i> Voir les données par périodes</a>
+        <button onclick="window.location.href='/alerte'" class="btnlink">
+            <i class="bi bi-droplet-half"></i> Voir les restrictions d'eau
+        </button>
+    </div>
+    <div id="currentInfo">
+        <h2>Température et humidité intérieure actuelles</h2><i class="bi bi-thermometer-low"></i>
+        <p id="currentTemperature">Température : -- °C</p><i class="bi bi-droplet-fill"></i>
+        <p id="currentHumidity">Humidité : -- %</p><i class="bi bi-clock-fill"></i>
+        <p id="currentTime">Heure : --:--:--</p>
+        <div class="weather-card" id="externalWeather">
+            <div class="weather-inner">
+                <h3><i class="bi bi-sun-fill" id="weatherIcon"></i> Météo de ??? (CODE POSTAL)</h3>
+                <div class="weather-grid">
+                    <div class="weather-group">
+                        <p><i class="bi bi-geo"></i> Température : <span class="highlight" id="externalTemp">--</span> °C</p>
+                        <p><i class="bi bi-thermometer-sun"></i> Ressentie : <span id="externalFeelsLike">--</span> °C</p>
+                        <p><i class="bi bi-thermometer-snow"></i> Min : <span id="externalTempMin">--</span> °C</p>
+                        <p><i class="bi bi-thermometer-sun"></i> Max : <span id="externalTempMax">--</span> °C</p>
+                    </div>
+                    <div class="weather-group">
+                        <p><i class="bi bi-wind"></i> Vent : <span id="externalWind">--</span> km/h</p>
+                        <p><i class="bi bi-compass"></i> Direction : <span id="externalWindDir">--</span></p>
+                        <p><i class="bi bi-droplet"></i> Humidité : <span id="externalHumidity">--</span> %</p>
+                        <p><i class="bi bi-speedometer"></i> Pression : <span id="externalPressure">--</span> hPa</p>
+                    </div>
+                    <div class="weather-group">
+                        <p><i class="bi bi-clouds"></i> Nébulosité : <span id="externalClouds">--</span> %</p>
+                        <p><i class="bi bi-eye"></i> Visibilité : <span id="externalVisibility">--</span> km</p>
+                        <p><i class="bi bi-sun"></i> UV : <span id="externalUV">--</span></p>
+                    </div>
+                    <div class="weather-group">
+                        <p><i class="bi bi-sunrise"></i> Lever : <span id="sunriseTime">--:--</span></p>
+                        <p><i class="bi bi-sunset"></i> Coucher : <span id="sunsetTime">--:--</span></p>
+                        <p><i class="bi bi-hourglass-split"></i> Jour : <span id="dayDuration">--</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1>Graphiques de température et d'humidité</h1>
+        <!-- Longueur-Largeur -->
+        <h2>Température (°C)</h2>
+        <canvas height="500" id="temperatureChart" width="900"></canvas>
+        <!-- Longueur-Largeur -->
+        <h2>Humidité (%)</h2>
+        <canvas height="500" id="humidityChart" width="900"></canvas>
+        <!-- Log des températures et humidités -->
+        <div id="logs">
+            <h3>Historique des données</h3>
+            <div id="logList"></div>
+        </div>
+        <!-- Copyright -->
+        <footer>
+            <br><br>
+            <a href="/rgpd">Politique de confidentialité</a>
+            <p></p>
+            <p>&copy; 2023 - 2025 ZeroxarZ. LICENCE MIT.</p>
+            <p></p>
+            <p>
+                <a href="https://github.com/ZeroxarZ" target="_blank"><img alt="GitHub" height="24" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" width="24"></a>
+            </p>
+        </footer>
+        <script src="js/index.js" type="module">
+        </script>
+    </div>
+    <!-- Toast de feedback -->
+    <div id="toast" style="display:none;position:fixed;bottom:30px;right:30px;z-index:9999;min-width:220px;padding:16px 24px;background:#323232;color:#fff;border-radius:8px;box-shadow:0 2px 8px #0003;font-weight:600;font-size:1.05em;transition:opacity 0.3s;"></div>
+    <!-- Spinner de chargement -->
+    <div id="spinner" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9998;background:rgba(255,255,255,0.6);justify-content:center;align-items:center;">
+        <div style="border:6px solid #f3f3f3;border-top:6px solid #3498db;border-radius:50%;width:48px;height:48px;animation:spin 1s linear infinite;"></div>
+    </div>
+    <style>
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

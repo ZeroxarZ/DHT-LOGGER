@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logs d'administration</title>
+    <link rel="icon" href="icons/favicon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_logs.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Logs d’administration</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Admin</th>
+                    <th>Action</th>
+                    <th>Cible</th>
+                    <th>Date/Heure</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log[0] }}</td>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[2] or "-" }}</td>
+                    <td>{{ log[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/admin" class="back-link"><i class="fa-solid fa-arrow-left"></i> Retour au panel admin</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title or "Erreur 429" }}</title>
+    <link href="css/429.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title or "Erreur 429" }}</h1>
+        <p>{{ message or "Vous avez dépassé le nombre de tentatives autorisées. Veuillez patienter quelques instants." }}</p>
+        {% if retry_after %}
+            <p>Réessayez dans <span id="countdown">{{ retry_after }}</span> secondes.</p>
+        {% endif %}
+        <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+    </div>
+</body>
+</html>
